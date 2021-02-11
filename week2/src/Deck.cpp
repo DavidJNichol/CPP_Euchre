@@ -35,9 +35,9 @@ Deck::Deck()
 //}
 
 void Deck::Shuffle() // Calls std shuffle
-{
-  //  std::random_shuffle (deck[0].face, deck[sizeof(deck)/sizeof(deck[0])].face);
-    //std::random_shuffle (deck[0].suit, deck[sizeof(deck)/sizeof(deck[0])].suit);
+{   
+    std::srand(unsigned(std::time(0)));
+    std::random_shuffle(&deck[0], &deck[24]);
 }
 
 
