@@ -6,6 +6,7 @@
 #include <algorithm>    // std::random_shuffle
 #include <ctime>        // std::time
 #include <cstdlib>      // std::rand, std::srand
+#include <vector>
 
 
 // Card struct definition
@@ -22,7 +23,7 @@ class Deck
     public:
         Deck();
         void Shuffle();
-        Card deck[24];
+        std::vector<Card> deck = std::vector<Card>(24);
         std::string suitArray[4] = {"Hearts", "Diamonds", "Spades", "Clubs"};
         std::string faceArray[6] = {"9", "10", "Jack", "Queen", "King", "Ace"};
 };
