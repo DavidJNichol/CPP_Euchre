@@ -2,16 +2,17 @@
 
 Deck::Deck()
 {
+    // Both of these are used to iterate suit and face placement in the deck
     int suitIterator = 0;
     int faceIterator = 0;
 
     //initialize deck   
-    for(int i =0; i <24; i++)
+    for(int i = 0; i < sizeof(deck)/sizeof(deck[0]); i++) // until i == 24
     {
-        if(faceIterator == 6)
+        if(faceIterator == sizeof(faceArray)/sizeof(faceArray[0])) // if faceiterator == 6
         {
-            faceIterator = 0;
-            suitIterator++;
+            faceIterator = 0; // reset the face 
+            suitIterator++; // move to the next suit
         }
         
         deck[i].suit = suitArray[suitIterator];
@@ -21,11 +22,23 @@ Deck::Deck()
     }
 }
     
+//template <class RandomIt, class RandomFunc>
+//void random_shuffle(RandomIt first, RandomIt last, RandomFunc&& r)
+//{
+  //  typename iterator_traits::difference_type i, n;
+   // n = last - first;
+    //for (i = n-1; i > 0; --i) 
+    //{
+     //   using std::swap;
+      //  swap(first[i], first[r(i+1)]);
+   // }
+//}
 
-
-void Deck::Shuffle()
+void Deck::Shuffle() // Calls std shuffle
 {
-
+  //  std::random_shuffle (deck[0].face, deck[sizeof(deck)/sizeof(deck[0])].face);
+    //std::random_shuffle (deck[0].suit, deck[sizeof(deck)/sizeof(deck[0])].suit);
 }
+
 
 
