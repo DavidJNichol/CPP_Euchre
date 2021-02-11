@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/EuchreCPP.dir/src/main.cpp.o  -o EuchreCPP -rdynamic 
