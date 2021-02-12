@@ -11,12 +11,11 @@ class Dealer
     public:
         Dealer();
         void Deal(std::string typeOfDeal);
-        void DealTwo();
-        void DealThree();
         Deck packOfCards;
         Player playerArray[4];
+        Card ExposeTopCard();
     private:
-        Player playerOne;
+        Player playerOne; //players instantiation 
         Player playerTwo;
         Player playerThree;
         Player playerFour;

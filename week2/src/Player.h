@@ -5,7 +5,7 @@ class Player
 {
     public:
     Player();
-    Card hand[5];
+    Card hand[5]; 
     std::string name;
 };
 

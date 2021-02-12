@@ -15,8 +15,8 @@ Deck::Deck()
             suitIterator++; // move to the next suit
         }
         
-        deck.at(i).suit = suitArray[suitIterator];
-        deck.at(i).face = faceArray[faceIterator];
+        deck.at(i).suit = suitArray[suitIterator]; // set suit
+        deck.at(i).face = faceArray[faceIterator]; //set face
         
         faceIterator++;        
     }

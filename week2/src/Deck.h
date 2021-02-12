@@ -2,11 +2,11 @@
 #define DECK_H
 
 
-#include <string>
+#include <string>       //std::string
 #include <algorithm>    // std::random_shuffle
 #include <ctime>        // std::time
 #include <cstdlib>      // std::rand, std::srand
-#include <vector>
+#include <vector>       // std::vector
 
 
 // Card struct definition
@@ -23,8 +23,9 @@ class Deck
     public:
         Deck();
         void Shuffle();
-        std::vector<Card> deck = std::vector<Card>(24);
-        std::string suitArray[4] = {"Hearts", "Diamonds", "Spades", "Clubs"};
+        std::vector<Card> deck = std::vector<Card>(24); // vector deck
+        // used to give cards suits and faces v
+        std::string suitArray[4] = {"Hearts", "Diamonds", "Spades", "Clubs"}; 
         std::string faceArray[6] = {"9", "10", "Jack", "Queen", "King", "Ace"};
 };
 #endif
