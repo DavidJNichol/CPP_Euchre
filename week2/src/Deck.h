@@ -27,5 +27,6 @@ class Deck
         std::string suitArray[4] = {"Hearts", "Diamonds", "Spades", "Clubs"}; 
         std::string faceArray[6] = {"9", "10", "Jack", "Queen", "King", "Ace"};
         Card trumpCard;
+        std::string sisterSuit;
 };
 #endif

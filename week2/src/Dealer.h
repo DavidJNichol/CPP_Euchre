@@ -14,9 +14,8 @@ class Dealer
         Deck packOfCards;
         Player playerArray[4];
         Card ExposeTopCard();
-        float RankHand();
-        Card FindCardsOfTypeSuit(Player player);
-        float handRating;
+        double RankHand(Player player);
+        std::string DetermineSisterSuit();
         
     private:
         Player playerOne; //players instantiation 

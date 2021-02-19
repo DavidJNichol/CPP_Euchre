@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Deck.cpp"
 #include "Dealer.cpp"
-
+#include <sstream>
 
 int main()
 {
@@ -60,6 +60,17 @@ int main()
 
     std::cout<<dealer.packOfCards.trumpCard.face + " Of " + dealer.packOfCards.trumpCard.suit<<std::endl; 
     std::cout<<""<<std::endl;
+    
+    std::string result;
+    std::ostringstream convert;
+
+    convert << dealer.RankHand(dealer.playerArray[0]);
+
+    result = convert.str();
+
+    
+    std::cout<<"Player One HandScore:"<<std::endl; 
+    std::cout<<result<<std::endl;
     
     return 0;
 }

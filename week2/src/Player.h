@@ -8,7 +8,7 @@ class Player
     Player();
     std::vector<Card> hand = std::vector<Card>(5); 
     std::string name;   
-    int handScore;
+    double handScore;
 };
 
 

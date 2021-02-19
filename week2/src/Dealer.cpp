@@ -64,22 +64,70 @@ void Dealer::Deal(std::string typeOfDeal)
 
 Card Dealer::ExposeTopCard(){return packOfCards.deck.at(0);}; // returns card at vector index 0
 
-float Dealer::RankHand()
+double Dealer::RankHand(Player player) // handRating percent chances of win are from EuchreUniverse.blogspot.com
 {
+    packOfCards.sisterSuit = DetermineSisterSuit(); // put this in a determine trump method
 
-    return .5;
-}
+    std::vector<double> handScoreVector;
 
-Card Dealer::FindCardsOfTypeSuit(Player player)
-{
     for(int i = 0; i < sizeof(player.hand)/sizeof(player.hand[0]); i++)
     {
         if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "Jack") // Right bower
         {
-            handRating = 1; // 100% chance of win
+            player.handScore = 1; // 100% chance of win
         } 
-        // We need to figure out a way to recognize the trump card's sister suit, then check for left bower
-        
+        else if(player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "Jack") // Left Bower
+        {
+            player.handScore = .76; // 76% chance of win
+        }
+        else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "Ace") // trump ace
+        {
+            player.handScore = .53;                
+        }
+        else if (player.hand.at(i).suit != packOfCards.sisterSuit && player.hand.at(i).face == "Ace") // green ace
+        {
+            player.handScore = .5;
+        }
+        else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "King") // trump king
+        {
+            player.handScore = .45;                  
+        }
+        else if(player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "Ace") // sister suit ace
+        {
+            player.handScore = .44;
+        }
+        else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "Queen") // trump queen
+        {
+            player.handScore = .4;
+        } // we arent going to check anything less than a 40% chance to win
+        else
+        {
+            player.handScore = 0;
+        }
+    }
+
+    return player.handScore;
+}
+
+
+
+std::string Dealer::DetermineSisterSuit()
+{
+    if(packOfCards.trumpCard.suit == "Clubs")
+    {
+        return "Spades";
+    }
+    else if(packOfCards.trumpCard.suit == "Spades")
+    {
+        return "Clubs";
+    }
+    else if(packOfCards.trumpCard.suit == "Diamonds")
+    {
+        return "Hearts";
+    }
+    else
+    {
+        return "Diamonds";
     }
 }
 
