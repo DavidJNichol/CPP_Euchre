@@ -14,6 +14,10 @@ class Dealer
         Deck packOfCards;
         Player playerArray[4];
         Card ExposeTopCard();
+        float RankHand();
+        Card FindCardsOfTypeSuit(Player player);
+        float handRating;
+        
     private:
         Player playerOne; //players instantiation 
         Player playerTwo;

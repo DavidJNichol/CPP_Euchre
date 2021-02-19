@@ -37,9 +37,9 @@ int main()
     for(int i = 0; i < sizeof(dealer.playerArray)/sizeof(dealer.playerArray[0]); i++)
     {
         std::cout<<dealer.playerArray[i].name + ":"<<std::endl; // print player names 
-        for(int k = 0; k < sizeof(dealer.playerArray[i].hand)/sizeof(dealer.playerArray[i].hand[0]); k++)
+        for(int k = 0; k < dealer.playerArray[i].hand.size(); k++)
         {
-            std::cout<<dealer.playerArray[i].hand[k].face + " Of " + dealer.playerArray[i].hand[k].suit<<std::endl;   //print player hands         
+            std::cout<<dealer.playerArray[i].hand.at(k).face + " Of " + dealer.playerArray[i].hand.at(k).suit<<std::endl;   //print player hands         
         }
 
         std::cout<<""<<std::endl;
@@ -51,6 +51,15 @@ int main()
     std::cout<<dealer.ExposeTopCard().face + " Of " + dealer.ExposeTopCard().suit<<std::endl; // print top card
     std::cout<<""<<std::endl;
 
+    std::cout<<"Trump card: (assume top card is accepted as trump)"<<std::endl;
+    std::cout<<""<<std::endl;
+
+    dealer.packOfCards.trumpCard.face = dealer.packOfCards.faceArray[2]; // Set to be jack
+
+    dealer.packOfCards.trumpCard.suit = dealer.ExposeTopCard().suit; // set to be trump suit
+
+    std::cout<<dealer.packOfCards.trumpCard.face + " Of " + dealer.packOfCards.trumpCard.suit<<std::endl; 
+    std::cout<<""<<std::endl;
     
     return 0;
 }

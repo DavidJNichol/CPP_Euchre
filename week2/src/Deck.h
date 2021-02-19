@@ -1,7 +1,6 @@
 #ifndef DECK_H
 #define DECK_H
 
-
 #include <string>       //std::string
 #include <algorithm>    // std::random_shuffle
 #include <ctime>        // std::time
@@ -27,5 +26,6 @@ class Deck
         // used to give cards suits and faces v
         std::string suitArray[4] = {"Hearts", "Diamonds", "Spades", "Clubs"}; 
         std::string faceArray[6] = {"9", "10", "Jack", "Queen", "King", "Ace"};
+        Card trumpCard;
 };
 #endif
