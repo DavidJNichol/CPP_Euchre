@@ -66,11 +66,48 @@ int main()
 
     convert << dealer.RankHand(dealer.playerArray[0]);
 
-    result = convert.str();
-
-    
+    result = convert.str(); 
+   
     std::cout<<"Player One HandScore:"<<std::endl; 
     std::cout<<result<<std::endl;
+
+    std::ostringstream convert2;
+
+    convert2 << dealer.RankHand(dealer.playerArray[1]);
+
+    result = convert2.str(); 
+   
+    std::cout<<"Player Two HandScore:"<<std::endl; 
+    std::cout<<result<<std::endl;
+
+     std::ostringstream convert3;
+
+    convert3 << dealer.RankHand(dealer.playerArray[2]);
+
+    result = convert3.str(); 
+   
+    std::cout<<"Player Three HandScore:"<<std::endl; 
+    std::cout<<result<<std::endl;
+
+     std::ostringstream convert4;
+
+    convert4 << dealer.RankHand(dealer.playerArray[3]);
+
+    result = convert4.str(); 
+   
+    std::cout<<"Player Four HandScore:"<<std::endl; 
+    std::cout<<result<<std::endl;
+    
+    for(int i = 0; i < sizeof(dealer.playerArray)/sizeof(dealer.playerArray[0]); i++)
+    {
+        if(dealer.RankHand(dealer.playerArray[i]) == 1)
+        {
+            std::cout<<std::endl;
+            std::cout<<dealer.playerArray[i].name + " Has declared " + dealer.packOfCards.trumpCard.suit + " As trump!"<<std::endl; 
+            std::cout<<std::endl;
+        }
+    }
+
     
     return 0;
 }

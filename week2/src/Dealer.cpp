@@ -1,6 +1,5 @@
 #include "Dealer.h"
 
-
 Dealer::Dealer()
 {
     // set up 4 players
@@ -68,45 +67,53 @@ double Dealer::RankHand(Player player) // handRating percent chances of win are 
 {
     packOfCards.sisterSuit = DetermineSisterSuit(); // put this in a determine trump method
 
-    std::vector<double> handScoreVector;
+    double scoreArray[5];
 
-    for(int i = 0; i < sizeof(player.hand)/sizeof(player.hand[0]); i++)
+    for(int i = 0; i < player.hand.size(); i++)
     {
         if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "Jack") // Right bower
         {
             player.handScore = 1; // 100% chance of win
+            scoreArray[i] = player.handScore;
         } 
         else if(player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "Jack") // Left Bower
         {
             player.handScore = .76; // 76% chance of win
+            scoreArray[i] = player.handScore;
         }
         else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "Ace") // trump ace
         {
-            player.handScore = .53;                
+            player.handScore = .53;        
+            scoreArray[i] = player.handScore;        
         }
         else if (player.hand.at(i).suit != packOfCards.sisterSuit && player.hand.at(i).face == "Ace") // green ace
         {
             player.handScore = .5;
+            scoreArray[i] = player.handScore;
         }
         else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "King") // trump king
         {
-            player.handScore = .45;                  
+            player.handScore = .45;     
+            scoreArray[i] = player.handScore;             
         }
         else if(player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "Ace") // sister suit ace
         {
             player.handScore = .44;
+            scoreArray[i] = player.handScore;
         }
         else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "Queen") // trump queen
         {
             player.handScore = .4;
+            scoreArray[i] = player.handScore;
         } // we arent going to check anything less than a 40% chance to win
         else
         {
             player.handScore = 0;
+            scoreArray[i] = player.handScore;
         }
     }
-
-    return player.handScore;
+    double *score = std::max_element(scoreArray, scoreArray + 5);
+    return *score;
 }
 
 
