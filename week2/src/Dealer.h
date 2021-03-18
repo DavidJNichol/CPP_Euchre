@@ -16,6 +16,9 @@ class Dealer
         Card ExposeTopCard();
         double RankHand(Player player);
         std::string DetermineSisterSuit();
+        void ChooseTrump();
+        Player startingPlayer;
+        Card PlayCard(); // should go in player class
         
     private:
         Player playerOne; //players instantiation 

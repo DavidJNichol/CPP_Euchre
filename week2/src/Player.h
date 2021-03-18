@@ -9,6 +9,7 @@ class Player
     std::vector<Card> hand = std::vector<Card>(5); 
     std::string name;   
     double handScore;
+    Card PlayCard(Player playerArray[]);
 };
 
 

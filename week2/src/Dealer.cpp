@@ -138,5 +138,28 @@ std::string Dealer::DetermineSisterSuit()
     }
 }
 
+void Dealer::ChooseTrump()
+{
+    for(int i = 0; i < sizeof(playerArray)/sizeof(playerArray[0]); i++)
+    {
+        if(RankHand(playerArray[i]) > .53f)
+        {
+            std::cout<<std::endl;
+            std::cout<<playerArray[i].name + " Has declared " + packOfCards.trumpCard.suit + " As trump!"<<std::endl; 
+            std::cout<<std::endl;
+            startingPlayer = playerArray[i];
+            break;
+        }
+    }
+}
+
+Card Dealer::PlayCard()
+{
+    for(int i = 0; i < sizeof(startingPlayer.hand)/sizeof(startingPlayer.hand[0]); i++)
+    {
+        
+    }
+}
+
 
 

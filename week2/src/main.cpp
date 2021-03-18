@@ -51,7 +51,7 @@ int main()
     std::cout<<dealer.ExposeTopCard().face + " Of " + dealer.ExposeTopCard().suit<<std::endl; // print top card
     std::cout<<""<<std::endl;
 
-    std::cout<<"Trump card: (assume top card is accepted as trump)"<<std::endl;
+    std::cout<<"Trump card:"<<std::endl;
     std::cout<<""<<std::endl;
 
     dealer.packOfCards.trumpCard.face = dealer.packOfCards.faceArray[2]; // Set to be jack
@@ -98,15 +98,7 @@ int main()
     std::cout<<"Player Four HandScore:"<<std::endl; 
     std::cout<<result<<std::endl;
     
-    for(int i = 0; i < sizeof(dealer.playerArray)/sizeof(dealer.playerArray[0]); i++)
-    {
-        if(dealer.RankHand(dealer.playerArray[i]) == 1)
-        {
-            std::cout<<std::endl;
-            std::cout<<dealer.playerArray[i].name + " Has declared " + dealer.packOfCards.trumpCard.suit + " As trump!"<<std::endl; 
-            std::cout<<std::endl;
-        }
-    }
+
 
     
     return 0;
