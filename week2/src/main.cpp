@@ -51,6 +51,8 @@ int main()
     std::cout<<dealer.ExposeTopCard().face + " Of " + dealer.ExposeTopCard().suit<<std::endl; // print top card
     std::cout<<""<<std::endl;
 
+    dealer.ChooseTrump();
+
     std::cout<<"Trump card:"<<std::endl;
     std::cout<<""<<std::endl;
 
@@ -97,8 +99,13 @@ int main()
    
     std::cout<<"Player Four HandScore:"<<std::endl; 
     std::cout<<result<<std::endl;
-    
 
+    std::cout<<""<<std::endl;
+    
+    for(int i = 0; i < sizeof(dealer.playerArray)/sizeof(dealer.playerArray[0]); i++)
+    {
+        std::cout<<dealer.playerArray[i].name + "'s best card is: " + dealer.playerArray[i].bestCard.face + " Of " + dealer.playerArray[i].bestCard.suit<<std::endl;
+    }
 
     
     return 0;

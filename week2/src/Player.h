@@ -10,6 +10,7 @@ class Player
     std::string name;   
     double handScore;
     Card PlayCard(Player playerArray[]);
+    Card bestCard;
 };
 
 

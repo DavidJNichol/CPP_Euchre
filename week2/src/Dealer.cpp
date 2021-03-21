@@ -63,7 +63,7 @@ void Dealer::Deal(std::string typeOfDeal)
 
 Card Dealer::ExposeTopCard(){return packOfCards.deck.at(0);}; // returns card at vector index 0
 
-double Dealer::RankHand(Player player) // handRating percent chances of win are from EuchreUniverse.blogspot.com
+double Dealer::RankHand(Player &player) // handRating percent chances of win are from EuchreUniverse.blogspot.com
 {
     packOfCards.sisterSuit = DetermineSisterSuit(); // put this in a determine trump method
 
@@ -75,6 +75,7 @@ double Dealer::RankHand(Player player) // handRating percent chances of win are 
         {
             player.handScore = 1; // 100% chance of win
             scoreArray[i] = player.handScore;
+            player.bestCard = player.hand.at(i);
         } 
         else if(player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "Jack") // Left Bower
         {
@@ -105,10 +106,35 @@ double Dealer::RankHand(Player player) // handRating percent chances of win are 
         {
             player.handScore = .4;
             scoreArray[i] = player.handScore;
-        } // we arent going to check anything less than a 40% chance to win
+        } 
+        else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "10") // trump 10
+        {
+            player.handScore = .34;
+            scoreArray[i] = player.handScore;
+        } 
+        else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "9") // trump 9
+        {
+            player.handScore = .32;
+            scoreArray[i] = player.handScore;
+        } 
+        else if(player.hand.at(i).suit != packOfCards.sisterSuit && player.hand.at(i).face == "King") // green king
+        {
+            player.handScore = .19;
+            scoreArray[i] = player.handScore;
+        } 
+        else if(player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "King") // sister suit king
+        {
+            player.handScore = .13;
+            scoreArray[i] = player.handScore;
+        } 
+        else if(player.hand.at(i).suit != packOfCards.sisterSuit && player.hand.at(i).face == "Queen") // green queen
+        {
+            player.handScore = .06;
+            scoreArray[i] = player.handScore;
+        } 
         else
         {
-            player.handScore = 0;
+            player.handScore = .01;
             scoreArray[i] = player.handScore;
         }
     }
@@ -144,7 +170,6 @@ void Dealer::ChooseTrump()
     {
         if(RankHand(playerArray[i]) > .53f)
         {
-            std::cout<<std::endl;
             std::cout<<playerArray[i].name + " Has declared " + packOfCards.trumpCard.suit + " As trump!"<<std::endl; 
             std::cout<<std::endl;
             startingPlayer = playerArray[i];

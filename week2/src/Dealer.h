@@ -4,6 +4,7 @@
 #include "Deck.h"
 #include "Player.cpp"
 #include <vector>
+#include <iostream>
 
 //Dealer class definition
 class Dealer
@@ -14,7 +15,7 @@ class Dealer
         Deck packOfCards;
         Player playerArray[4];
         Card ExposeTopCard();
-        double RankHand(Player player);
+        double RankHand(Player &player);
         std::string DetermineSisterSuit();
         void ChooseTrump();
         Player startingPlayer;
