@@ -20,6 +20,9 @@ Deck::Deck()
         
         faceIterator++;        
     }
+
+    
+
 }
     
 

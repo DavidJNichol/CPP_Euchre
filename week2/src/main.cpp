@@ -92,7 +92,7 @@ int main()
     std::cout<<result<<std::endl;
 
      std::ostringstream convert4;
-
+   
     convert4 << dealer.RankHand(dealer.playerArray[3]);
 
     result = convert4.str(); 
@@ -101,12 +101,13 @@ int main()
     std::cout<<result<<std::endl;
 
     std::cout<<""<<std::endl;
-    
+
     for(int i = 0; i < sizeof(dealer.playerArray)/sizeof(dealer.playerArray[0]); i++)
     {
-        std::cout<<dealer.playerArray[i].name + "'s best card is: " + dealer.playerArray[i].bestCard.face + " Of " + dealer.playerArray[i].bestCard.suit<<std::endl;
+        std::cout<<dealer.playerArray[i].name + " plays: " + dealer.PlayCard(dealer.playerArray[i]).face + " Of " + dealer.PlayCard(dealer.playerArray[i]).suit <<std::endl;
     }
 
-    
-    return 0;
-}
+    dealer.DetermineRoundWinner();
+       
+    return 0;  
+}          

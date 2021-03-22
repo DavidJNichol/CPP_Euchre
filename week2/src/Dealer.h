@@ -19,7 +19,9 @@ class Dealer
         std::string DetermineSisterSuit();
         void ChooseTrump();
         Player startingPlayer;
-        Card PlayCard(); // should go in player class
+        void DetermineBestCard(Player &player);
+        Card PlayCard(Player &player); // should go in player class
+        void DetermineRoundWinner();
         
     private:
         Player playerOne; //players instantiation 

@@ -15,53 +15,51 @@ Dealer::Dealer()
     playerArray[3].name = "playerFour";
 }
 
-
 void Dealer::Deal(std::string typeOfDeal)
 {
-    if(typeOfDeal == "twoFirst")
+    if (typeOfDeal == "twoFirst")
     {
-        for(int i = 0; i < (sizeof(playerArray)/sizeof(playerArray[0])); i++) // Loop through each player
+        for (int i = 0; i < (sizeof(playerArray) / sizeof(playerArray[0])); i++) // Loop through each player
         {
-            for(int k = 0; k < 2; k++) // loop through deck and give each player 2 cards
+            for (int k = 0; k < 2; k++) // loop through deck and give each player 2 cards
             {
-                playerArray[i].hand.at(k) = packOfCards.deck.at(k); // player at i gets two cards  
-                packOfCards.deck.erase(packOfCards.deck.begin()+k); // remove the cards given
+                playerArray[i].hand.at(k) = packOfCards.deck.at(k);   // player at i gets two cards
+                packOfCards.deck.erase(packOfCards.deck.begin() + k); // remove the cards given
             }
         }
 
-        for(int i = 0; i < (sizeof(playerArray)/sizeof(playerArray[0])); i++)
+        for (int i = 0; i < (sizeof(playerArray) / sizeof(playerArray[0])); i++)
         {
-            for(int k = 2; k < 5; k++) // this time each player gets three
+            for (int k = 2; k < 5; k++) // this time each player gets three
             {
                 playerArray[i].hand.at(k) = packOfCards.deck.at(k);
-                packOfCards.deck.erase(packOfCards.deck.begin()+k);
+                packOfCards.deck.erase(packOfCards.deck.begin() + k);
             }
         }
     }
-    else if(typeOfDeal == "threeFirst")
+    else if (typeOfDeal == "threeFirst")
     {
-        for(int i = 0; i < (sizeof(playerArray)/sizeof(playerArray[0])); i++)
+        for (int i = 0; i < (sizeof(playerArray) / sizeof(playerArray[0])); i++)
         {
-            for(int k = 0; k < 3; k++) // three cards given first
+            for (int k = 0; k < 3; k++) // three cards given first
             {
                 playerArray[i].hand.at(k) = packOfCards.deck.at(k);
-                packOfCards.deck.erase(packOfCards.deck.begin()+k);
+                packOfCards.deck.erase(packOfCards.deck.begin() + k);
             }
         }
 
-        for(int i = 0; i < (sizeof(playerArray)/sizeof(playerArray[0])); i++)
+        for (int i = 0; i < (sizeof(playerArray) / sizeof(playerArray[0])); i++)
         {
-            for(int k = 3; k < 5; k++) // then two
+            for (int k = 3; k < 5; k++) // then two
             {
                 playerArray[i].hand.at(k) = packOfCards.deck.at(k);
-                packOfCards.deck.erase(packOfCards.deck.begin()+k);
+                packOfCards.deck.erase(packOfCards.deck.begin() + k);
             }
         }
     }
-    
 }
 
-Card Dealer::ExposeTopCard(){return packOfCards.deck.at(0);}; // returns card at vector index 0
+Card Dealer::ExposeTopCard() { return packOfCards.deck.at(0); }; // returns card at vector index 0
 
 double Dealer::RankHand(Player &player) // handRating percent chances of win are from EuchreUniverse.blogspot.com
 {
@@ -69,72 +67,85 @@ double Dealer::RankHand(Player &player) // handRating percent chances of win are
 
     double scoreArray[5];
 
-    for(int i = 0; i < player.hand.size(); i++)
+    for (int i = 0; i < player.hand.size(); i++)
     {
-        if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "Jack") // Right bower
+        if (player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "Jack") // Right bower
         {
             player.handScore = 1; // 100% chance of win
+            player.hand.at(i).score = 1;
             scoreArray[i] = player.handScore;
             player.bestCard = player.hand.at(i);
-        } 
-        else if(player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "Jack") // Left Bower
+        }
+        else if (player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "Jack") // Left Bower
         {
             player.handScore = .76; // 76% chance of win
+            player.hand.at(i).score = .76;
             scoreArray[i] = player.handScore;
         }
-        else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "Ace") // trump ace
+        else if (player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "Ace") // trump ace
         {
-            player.handScore = .53;        
-            scoreArray[i] = player.handScore;        
+            player.handScore = .53;
+            player.hand.at(i).score = .53;
+            scoreArray[i] = player.handScore;
         }
         else if (player.hand.at(i).suit != packOfCards.sisterSuit && player.hand.at(i).face == "Ace") // green ace
         {
             player.handScore = .5;
+            player.hand.at(i).score = .5;
             scoreArray[i] = player.handScore;
         }
-        else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "King") // trump king
+        else if (player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "King") // trump king
         {
-            player.handScore = .45;     
-            scoreArray[i] = player.handScore;             
+            player.handScore = .45;
+            player.hand.at(i).score = .45;
+            scoreArray[i] = player.handScore;
         }
-        else if(player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "Ace") // sister suit ace
+        else if (player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "Ace") // sister suit ace
         {
             player.handScore = .44;
+            player.hand.at(i).score = .44;
             scoreArray[i] = player.handScore;
         }
-        else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "Queen") // trump queen
+        else if (player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "Queen") // trump queen
         {
             player.handScore = .4;
+            player.hand.at(i).score = .4;
             scoreArray[i] = player.handScore;
-        } 
-        else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "10") // trump 10
+        }
+        else if (player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "10") // trump 10
         {
             player.handScore = .34;
+            player.hand.at(i).score = .34;
             scoreArray[i] = player.handScore;
-        } 
-        else if(player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "9") // trump 9
+        }
+        else if (player.hand.at(i).suit == packOfCards.trumpCard.suit && player.hand.at(i).face == "9") // trump 9
         {
             player.handScore = .32;
+            player.hand.at(i).score = .32;
             scoreArray[i] = player.handScore;
-        } 
-        else if(player.hand.at(i).suit != packOfCards.sisterSuit && player.hand.at(i).face == "King") // green king
+        }
+        else if (player.hand.at(i).suit != packOfCards.sisterSuit && player.hand.at(i).face == "King") // green king
         {
             player.handScore = .19;
+            player.hand.at(i).score = .19;
             scoreArray[i] = player.handScore;
-        } 
-        else if(player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "King") // sister suit king
+        }
+        else if (player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "King") // sister suit king
         {
             player.handScore = .13;
+            player.hand.at(i).score = .13;
             scoreArray[i] = player.handScore;
-        } 
-        else if(player.hand.at(i).suit != packOfCards.sisterSuit && player.hand.at(i).face == "Queen") // green queen
+        }
+        else if (player.hand.at(i).suit != packOfCards.sisterSuit && player.hand.at(i).face == "Queen") // green queen
         {
             player.handScore = .06;
+            player.hand.at(i).score = .06;
             scoreArray[i] = player.handScore;
-        } 
+        }
         else
         {
             player.handScore = .01;
+            player.hand.at(i).score = .01;
             scoreArray[i] = player.handScore;
         }
     }
@@ -142,19 +153,17 @@ double Dealer::RankHand(Player &player) // handRating percent chances of win are
     return *score;
 }
 
-
-
 std::string Dealer::DetermineSisterSuit()
 {
-    if(packOfCards.trumpCard.suit == "Clubs")
+    if (packOfCards.trumpCard.suit == "Clubs")
     {
         return "Spades";
     }
-    else if(packOfCards.trumpCard.suit == "Spades")
+    else if (packOfCards.trumpCard.suit == "Spades")
     {
         return "Clubs";
     }
-    else if(packOfCards.trumpCard.suit == "Diamonds")
+    else if (packOfCards.trumpCard.suit == "Diamonds")
     {
         return "Hearts";
     }
@@ -166,25 +175,91 @@ std::string Dealer::DetermineSisterSuit()
 
 void Dealer::ChooseTrump()
 {
-    for(int i = 0; i < sizeof(playerArray)/sizeof(playerArray[0]); i++)
+    for (int i = 0; i < sizeof(playerArray) / sizeof(playerArray[0]); i++)
     {
-        if(RankHand(playerArray[i]) > .53f)
+        if (RankHand(playerArray[i]) > .53f)
         {
-            std::cout<<playerArray[i].name + " Has declared " + packOfCards.trumpCard.suit + " As trump!"<<std::endl; 
-            std::cout<<std::endl;
+            std::cout << playerArray[i].name + " Has declared " + packOfCards.trumpCard.suit + " As trump!" << std::endl;
+            std::cout << std::endl;
             startingPlayer = playerArray[i];
             break;
         }
     }
 }
 
-Card Dealer::PlayCard()
+Card Dealer::PlayCard(Player &player)
 {
-    for(int i = 0; i < sizeof(startingPlayer.hand)/sizeof(startingPlayer.hand[0]); i++)
+    std::vector<double> cardScores;
+    std::vector<Card> eligibleCards;
+
+    for (int i = 0; i < player.hand.size(); i++)
     {
-        
+        if (player.hand.at(i).suit == packOfCards.trumpCard.suit)
+        {
+            eligibleCards.push_back(player.hand.at(i));
+        }
+
+        cardScores.push_back(player.hand.at(i).score); // assign card scores in hand to vector
     }
+
+    double highestScore = *std::max_element(cardScores.begin(), cardScores.end());
+
+    if (eligibleCards.empty())
+    {
+        for (int i = 0; i < player.hand.size(); i++)
+        {
+            if (player.hand.at(i).score == highestScore)
+            {
+                player.bestCard = player.hand.at(i);
+                return player.hand.at(i); // play card with highest score
+            }
+        }
+    }
+    else
+    {
+        while (!eligibleCards.empty())
+        {
+            for (int i = 0; i < player.hand.size(); i++)
+            {
+                double highestEligibleScore = *std::max_element(cardScores.begin(), cardScores.end());
+
+                if (player.hand.at(i).score == highestEligibleScore)
+                {
+                    if (player.hand.at(i).suit == packOfCards.trumpCard.suit)
+                    {
+                        player.bestCard = player.hand.at(i);
+                        return player.hand.at(i); // play card with highest score
+                    }
+                    else
+                    {
+                        cardScores.erase(cardScores.begin() + i);
+                    }
+                }
+            }
+        }
+    }
+
+    return player.hand.at(0);
 }
 
+void Dealer::DetermineRoundWinner()
+{
+    double handScores[5];
 
+    for (int i = 0; i < sizeof(playerArray) / sizeof(playerArray[0]); i++)
+    {
+        handScores[i] = playerArray[i].bestCard.score;
+    }
 
+    double highestScore = *std::max_element(handScores, handScores + 5);
+
+    for (int i = 0; i < sizeof(playerArray) / sizeof(playerArray[0]); i++)
+    {
+        if (playerArray[i].bestCard.score == highestScore)
+        {
+            std::cout << "-------------------" << std::endl;
+            std::cout << playerArray[i].name + " has won the trick!" << std::endl;
+            std::cout << "-------------------" << std::endl;
+        }
+    }
+}

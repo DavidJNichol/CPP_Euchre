@@ -14,6 +14,7 @@ struct Card
     public:
         std::string suit;       
         std::string face;
+        double score;
 };
 
 //Deck class definition
