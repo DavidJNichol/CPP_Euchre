@@ -175,6 +175,7 @@ std::string Dealer::DetermineSisterSuit()
 
 void Dealer::ChooseTrump()
 {
+    bool trumpChosen = false;
     for (int i = 0; i < sizeof(playerArray) / sizeof(playerArray[0]); i++)
     {
         if (RankHand(playerArray[i]) > .53f)
@@ -182,8 +183,15 @@ void Dealer::ChooseTrump()
             std::cout << playerArray[i].name + " Has declared " + packOfCards.trumpCard.suit + " As trump!" << std::endl;
             std::cout << std::endl;
             startingPlayer = playerArray[i];
+            trumpChosen = true;
             break;
         }
+    }
+    if(!trumpChosen)
+    {
+        std::cout <<"No player has chosen to declare trump, player to the left of the dealer may now choose."<< std::endl;
+        std::cout << playerArray[1].name + " Has declared " + playerArray[1].bestCard.suit + " As trump!" << std::endl;
+    
     }
 }
 
@@ -194,7 +202,7 @@ Card Dealer::PlayCard(Player &player)
 
     for (int i = 0; i < player.hand.size(); i++)
     {
-        if (player.hand.at(i).suit == packOfCards.trumpCard.suit)
+        if (player.hand.at(i).suit == packOfCards.trumpCard.suit || (player.hand.at(i).face == "Jack" && player.hand.at(i).suit == packOfCards.sisterSuit))
         {
             eligibleCards.push_back(player.hand.at(i));
         }
@@ -225,7 +233,7 @@ Card Dealer::PlayCard(Player &player)
 
                 if (player.hand.at(i).score == highestEligibleScore)
                 {
-                    if (player.hand.at(i).suit == packOfCards.trumpCard.suit)
+                    if (player.hand.at(i).suit == packOfCards.trumpCard.suit || (player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "Jack"))
                     {
                         player.bestCard = player.hand.at(i);
                         return player.hand.at(i); // play card with highest score
@@ -257,9 +265,9 @@ void Dealer::DetermineRoundWinner()
     {
         if (playerArray[i].bestCard.score == highestScore)
         {
-            std::cout << "-------------------" << std::endl;
+            std::cout << "-------------------------------" << std::endl;
             std::cout << playerArray[i].name + " has won the trick!" << std::endl;
-            std::cout << "-------------------" << std::endl;
+            std::cout << "-------------------------------" << std::endl;
         }
     }
 }
