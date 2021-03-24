@@ -236,6 +236,7 @@ Card Dealer::PlayCard(Player &player)
                     if (player.hand.at(i).suit == packOfCards.trumpCard.suit || (player.hand.at(i).suit == packOfCards.sisterSuit && player.hand.at(i).face == "Jack"))
                     {
                         player.bestCard = player.hand.at(i);
+                        player.cardPlayedIndex = i;
                         return player.hand.at(i); // play card with highest score
                     }
                     else
@@ -271,3 +272,14 @@ void Dealer::DetermineRoundWinner()
         }
     }
 }
+
+void Dealer::RemoveCardFromHand(Player &player)
+{
+    player.hand.erase(player.hand.begin() + player.cardPlayedIndex - 1);
+}
+
+void Dealer::RemoveTopCardFromDeck()
+{
+    packOfCards.deck.erase(packOfCards.deck.begin());
+}
+

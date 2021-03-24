@@ -11,6 +11,7 @@ class Player
     double handScore;
     Card PlayCard(Player playerArray[]);
     Card bestCard;
+    int cardPlayedIndex;
 };
 
 

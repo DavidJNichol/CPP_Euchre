@@ -57,6 +57,7 @@ int main()
     dealer.packOfCards.trumpCard.suit = dealer.ExposeTopCard().suit; // set to be trump suit
 
     dealer.ChooseTrump();
+    dealer.RemoveTopCardFromDeck();
 
     std::cout<<"Trump card:"<<std::endl;
 
@@ -107,6 +108,91 @@ int main()
     for(int i = 0; i < sizeof(dealer.playerArray)/sizeof(dealer.playerArray[0]); i++)
     {
         std::cout<<dealer.playerArray[i].name + " plays: " + dealer.PlayCard(dealer.playerArray[i]).face + " Of " + dealer.PlayCard(dealer.playerArray[i]).suit <<std::endl;
+        dealer.RemoveCardFromHand(dealer.playerArray[i]);
+    }
+  
+    dealer.DetermineRoundWinner();
+
+    ///////////////////////////////////////////////
+
+    std::cout<<""<<std::endl;
+    std::cout<<"ROUND 2:"<<std::endl;
+    std::cout<<""<<std::endl;
+
+    for(int i = 0; i < sizeof(dealer.playerArray)/sizeof(dealer.playerArray[0]); i++)
+    {
+        std::cout<<dealer.playerArray[i].name + ":"<<std::endl; // print player names 
+        for(int k = 0; k < dealer.playerArray[i].hand.size(); k++)
+        {
+            std::cout<<dealer.playerArray[i].hand.at(k).face + " Of " + dealer.playerArray[i].hand.at(k).suit<<std::endl;   //print player hands         
+        }
+
+        std::cout<<""<<std::endl;
+    }
+
+    std::cout<<"Flip over top card:"<<std::endl;
+
+    std::cout<<"----------------"<<std::endl;
+    std::cout<<dealer.ExposeTopCard().face + " Of " + dealer.ExposeTopCard().suit<<std::endl; // print top card
+    std::cout<<"----------------"<<std::endl;
+    std::cout<<""<<std::endl;
+
+    dealer.packOfCards.trumpCard.face = dealer.packOfCards.faceArray[2]; // Set to be jack
+
+    dealer.packOfCards.trumpCard.suit = dealer.ExposeTopCard().suit; // set to be trump suit
+
+    dealer.ChooseTrump();
+    dealer.RemoveTopCardFromDeck();
+
+    std::cout<<"Trump card:"<<std::endl;
+
+    std::cout<<"----------------"<<std::endl;
+    std::cout<<dealer.packOfCards.trumpCard.face + " Of " + dealer.packOfCards.trumpCard.suit<<std::endl; 
+    std::cout<<"----------------"<<std::endl;
+    std::cout<<""<<std::endl;   
+    
+    std::ostringstream converta;
+
+    converta << dealer.RankHand(dealer.playerArray[0]);
+
+    result = converta.str(); 
+   
+    std::cout<<"Player One HandScore:"<<std::endl; 
+    std::cout<<result<<std::endl;
+
+    std::ostringstream convert5;
+
+    convert5 << dealer.RankHand(dealer.playerArray[1]);
+
+    result = convert5.str(); 
+   
+    std::cout<<"Player Two HandScore:"<<std::endl; 
+    std::cout<<result<<std::endl;
+
+     std::ostringstream convert6;
+
+    convert6 << dealer.RankHand(dealer.playerArray[2]);
+
+    result = convert6.str(); 
+   
+    std::cout<<"Player Three HandScore:"<<std::endl; 
+    std::cout<<result<<std::endl;
+
+     std::ostringstream convert7;
+   
+    convert7 << dealer.RankHand(dealer.playerArray[3]);
+
+    result = convert7.str(); 
+   
+    std::cout<<"Player Four HandScore:"<<std::endl; 
+    std::cout<<result<<std::endl;
+  
+    std::cout<<""<<std::endl;
+
+    for(int i = 0; i < sizeof(dealer.playerArray)/sizeof(dealer.playerArray[0]); i++)
+    {
+        std::cout<<dealer.playerArray[i].name + " plays: " + dealer.PlayCard(dealer.playerArray[i]).face + " Of " + dealer.PlayCard(dealer.playerArray[i]).suit <<std::endl;
+        dealer.RemoveCardFromHand(dealer.playerArray[i]);
     }
   
     dealer.DetermineRoundWinner();

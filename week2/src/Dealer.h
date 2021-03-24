@@ -22,6 +22,8 @@ class Dealer
         void DetermineBestCard(Player &player);
         Card PlayCard(Player &player); // should go in player class
         void DetermineRoundWinner();
+        void RemoveCardFromHand(Player &player);
+        void RemoveTopCardFromDeck();
         
     private:
         Player playerOne; //players instantiation 
