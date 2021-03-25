@@ -20,7 +20,6 @@ class Dealer
         void ChooseTrump();
         Player startingPlayer;
         void DetermineBestCard(Player &player);
-        Card PlayCard(Player &player); // should go in player class
         void DetermineRoundWinner();
         void RemoveCardFromHand(Player &player);
         void RemoveTopCardFromDeck();

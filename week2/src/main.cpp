@@ -7,6 +7,7 @@ int main()
 {
     Deck d = Deck();
     Dealer dealer = Dealer();
+    Player player = Player();
 
     std::cout << "" << std::endl;
     std::cout << "Unshuffled cards: " << std::endl;
@@ -68,7 +69,7 @@ int main()
                 std::cout << dealer.playerArray[i].hand.at(k).face + " Of " + dealer.playerArray[i].hand.at(k).suit << std::endl;
             }
 
-            std::cout << "" << std::endl;
+            std::cout << "" << std::endl; 
         }
 
         std::cout << "Trump card:" << std::endl;
@@ -94,7 +95,7 @@ int main()
         for (int i = 0; i < sizeof(dealer.playerArray) / sizeof(dealer.playerArray[0]); i++) // PLAY CARDS
         {
             Card cardPlayed;
-            cardPlayed = dealer.PlayCard(dealer.playerArray[i]);
+            cardPlayed = player.PlayCard(dealer.playerArray[i], dealer.packOfCards);
             std::cout << dealer.playerArray[i].name + " plays: " + cardPlayed.face + " Of " + cardPlayed.suit << std::endl;
         }
 

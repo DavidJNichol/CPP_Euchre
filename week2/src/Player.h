@@ -12,6 +12,7 @@ class Player
     Card PlayCard(Player playerArray[]);
     Card bestCard;
     int cardPlayedIndex;
+    Card PlayCard(Player &player, Deck packOfCards);
 };
 
 
