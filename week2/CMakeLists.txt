@@ -3,6 +3,6 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-project(EuchreCPP)
+project(CPP_Euchre)
 
-add_executable(EuchreCPP src/main.cpp)
+add_executable(CPP_Euchre src/main.cpp)
