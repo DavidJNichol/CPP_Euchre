@@ -275,7 +275,7 @@ void Dealer::DetermineRoundWinner()
 
 void Dealer::RemoveCardFromHand(Player &player)
 {
-    player.hand.erase(player.hand.begin() + player.cardPlayedIndex - 1);
+    player.hand.erase(player.hand.begin() + player.cardPlayedIndex);
 }
 
 void Dealer::RemoveTopCardFromDeck()

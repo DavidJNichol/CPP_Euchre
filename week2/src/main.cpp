@@ -58,7 +58,7 @@ int main()
         std::cout<<"ROUND " << trickCounter<<std::endl; // print round number
         std::cout << "///////////////////////////////////////" << std::endl;
         std::cout << "" << std::endl;
-
+ 
         for (int i = 0; i < sizeof(dealer.playerArray) / sizeof(dealer.playerArray[0]); i++) //PRINT PLAYER HANDS
         {
             std::cout << dealer.playerArray[i].name + ":" << std::endl; // print player names
@@ -101,7 +101,7 @@ int main()
         for (int i = 0; i < sizeof(dealer.playerArray) / sizeof(dealer.playerArray[0]); i++) // REMOVE CARDS PLAYED FROM HAND
         {
             dealer.RemoveCardFromHand(dealer.playerArray[i]);
-        }
+        } 
    
         dealer.DetermineRoundWinner();
 
