@@ -6,8 +6,8 @@ include_directories(SYSTEM
   )
 
 set(GOOGLETEST_SOURCES
-  ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}/src/gtest-all.cc
-  ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}/src/gtest_main.cc
+  ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}/src/gtest-all.cc.o
+  ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}/src/gtest_main.cc.o
   )
 
 foreach(_source ${GOOGLETEST_SOURCES})
