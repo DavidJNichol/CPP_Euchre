@@ -7,11 +7,8 @@ project(CPP_Euchre)
 
 add_executable(CPP_Euchre src/main.cpp)
 include_directories(.)
-include(gtest.cmake)
 
-set(UNIT_TESTS Test/Test.cpp)
+set(UNIT_TESTS src/Test.cpp)
 set(MAIN_FILE src/main.cpp)
-add_executable(demo ${MAIN_FILE} src)
 
-add_executable(demo-test ${UNIT_TESTS} src)
-target_link_libraries(demo-test gtest ${CMAKE_THREAD_LIBS_INIT})
+add_executable(testlib-test src/Test.cpp)

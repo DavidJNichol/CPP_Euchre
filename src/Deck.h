@@ -1,6 +1,8 @@
 #ifndef DECK_H
 #define DECK_H
 
+#pragma once
+
 #include <string>       //std::string
 #include <algorithm>    // std::random_shuffle
 #include <ctime>        // std::time
