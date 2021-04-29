@@ -1,6 +1,9 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <vector> 
+#include "Deck.h" 
+
 // Player class definition
 class Player
 {

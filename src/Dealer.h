@@ -2,7 +2,7 @@
 #define DEALER_H
 
 #include "Deck.h"
-#include "Player.cpp"
+#include "Player.h"
 #include <vector>
 #include <iostream>
 

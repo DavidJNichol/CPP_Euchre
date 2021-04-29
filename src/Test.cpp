@@ -1,8 +1,12 @@
-#include "Deck.h"
+#include "Dealer.h"
+#include <cassert>
 
 void DeckTest()
 {
-    Deck d = Deck();
+    Dealer dealer = Dealer();
+
+
+
 }
 
 int main()
