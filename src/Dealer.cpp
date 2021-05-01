@@ -13,6 +13,8 @@ Dealer::Dealer()
     playerArray[1].name = "playerTwo";
     playerArray[2].name = "playerThree";
     playerArray[3].name = "playerFour";
+
+    winner = Player();
 }
 
 void Dealer::Deal(std::string typeOfDeal)
@@ -215,6 +217,7 @@ void Dealer::DetermineRoundWinner()
             std::cout << "-------------------------------" << std::endl;
             std::cout << playerArray[i].name + " has won the trick!" << std::endl;
             std::cout << "-------------------------------" << std::endl;
+            winner = playerArray[i]; 
             break;
         }
     }

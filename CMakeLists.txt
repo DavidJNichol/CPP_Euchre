@@ -11,4 +11,4 @@ include_directories(.)
 set(UNIT_TESTS src/Test.cpp)
 set(MAIN_FILE src/main.cpp)
 
-add_executable(testlib-test src/Test.cpp)
+add_executable(testlib-test src/Test.cpp src/Dealer.cpp src/Player.cpp src/Deck.cpp)

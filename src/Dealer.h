@@ -23,6 +23,7 @@ class Dealer
         void DetermineRoundWinner();
         void RemoveCardFromHand(Player &player);
         void RemoveTopCardFromDeck();
+        Player winner;
         
     private:
         Player playerOne; //players instantiation 
