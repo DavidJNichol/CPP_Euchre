@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Deck.cpp"
 #include "Dealer.cpp"
+#include "Player.cpp"
 #include <sstream>
 
 int main()
